@@ -1,0 +1,15 @@
+#!/bin/bash
+# SBATCH --partition=gpu         ### Indicate want long node
+# SBATCH --job-name=AD_ps32     ### Job Name
+# SBATCH --output=AD_ps32.out   ### File in which to store job output
+# SBATCH --error=AD_ps32.err    ### File in which to store job error messages
+# SBATCH --time=0-05:00:00          ### Wall clock time limit in Days-HH:MM:SS
+# SBATCH --nodes=1                ### Node count required for the job
+# SBATCH --ntasks-per-node=28     ### Nuber of tasks to be launched per Node
+
+# Load the proper module
+ml slurm easybuild intel/2017a Stacks/1.46
+
+process_shortreads -1 32_4G_both_S23_L008_R1_001.fastq -2 32_4G_both_S23_L008_R2_001.fastq \
+-i fastq  -y fastq -o ~/AS1/trim32 -c --adapter_mm 2 --adapter_1 AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC \
+--adapter_2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT -q
