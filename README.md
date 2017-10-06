@@ -8,11 +8,11 @@ Be sure to upload all relevant materials by the deadline and **double check** to
 # Contents of `sf-seq-qaa-alexadowdell`
 
 The master repository for `sf-seq-qaa-alexadowdell` contains the following:
-- FastQCFiles/
-- Part1/	
-- Part2/
-- Part3/	
-- Scripts/
+- **FastQCFiles/**
+- **Part1/**
+- **Part2/**
+- **Part3/**	
+- **Scripts/**
 - `Bi624_PS1.Rmd`
 - `Bi624_PS1.html`
 - `Bi624_PS1.pdf`	
