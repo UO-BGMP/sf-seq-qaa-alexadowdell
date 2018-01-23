@@ -1,0 +1,17 @@
+#!/bin/bash
+# SBATCH --partition=short         ### Indicate want long node
+# SBATCH --job-name=AD_cut2     ### Job Name
+# SBATCH --output=AD_cut2.out   ### File in which to store job output
+# SBATCH --error=AD_cut2.err    ### File in which to store job error messages
+# SBATCH --time=0-12:00:00          ### Wall clock time limit in Days-HH:MM:SS
+# SBATCH --nodes=1                ### Node count required for the job
+# SBATCH --ntasks-per-node=28     ### Nuber of tasks to be launched per Node
+
+# Load the proper module
+ml easybuild ifort/2017.1.132-GCC-6.3.0-2.27 impi/2017.1.132
+ml cutadapt/1.14-Python-2.7.13
+
+cutadapt -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC -A AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT \
+-o /home/adowdell/AS1/cutadapt/cutadapt32-2/trimmed_32_4G.R1.fastq -p \
+/home/adowdell/AS1/cutadapt/cutadapt32-2/trimmed_32_4G.R2.fastq /home/adowdell/AS1/32_4G_both_S23_L008_R1_001.fastq \
+/home/adowdell/AS1/32_4G_both_S23_L008_R2_001.fastq

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#SBATCH --partition=short        ### Indicate want long node
+#SBATCH --job-name=AD_GMAP     ### Job Name
+#SBATCH --output=AD_mouseDB.out         ### File in which to store job output
+#SBATCH --error=AD_mouseDB.err          ### File in which to store job error messages
+#SBATCH --time=0-04:00:00       ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Node count required for the job
+#SBATCH --ntasks-per-node=28     ### Nuber of tasks to be launched per Node
+
+module use /projects/ebb/modules/all/Core
+module load gmap-gsnap/2017-09-11
+gmap_build -D ~/AS1/Part3 -d mouseDB -g Mus_musculus.GRCm38.rRNAonly.fa.gz

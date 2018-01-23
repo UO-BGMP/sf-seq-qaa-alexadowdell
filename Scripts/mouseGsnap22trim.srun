@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --partition=short        ### Indicate want long node
+#SBATCH --job-name=AD_22bt     ### Job Name
+#SBATCH --output=AD_22bt.out         ### File in which to store job output
+#SBATCH --error=AD_22bt.err          ### File in which to store job error messages
+#SBATCH --time=0-24:00:00	### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Node count required for the job
+#SBATCH --ntasks-per-node=28     ### Nuber of tasks to be launched per Node
+
+module use /projects/ebb/modules/all/Core
+module load gmap-gsnap/2017-09-11
+
+gsnap -D ~/AS1/Part3 -d mouseDB -t 26 --allow-pe-name-mismatch --no-sam-headers --ordered -N 1 -A sam ~/AS1/cutadapt/cutadapt22-2/trimmed_22_3H.R1.fastq \
+~/AS1/cutadapt/cutadapt22-2/trimmed_22_3H.R2.fastq --split-output ~/AS1/Part3-Trimmed/22_3H_R1R2_gsnapTrim.sam
+
